@@ -31,7 +31,9 @@ const (
 	F_ISONGROUND
 )
 
-type SBSMessage interface{}
+type SBSMessage interface {
+	GetPreamble() Preamble
+}
 
 type Preamble struct {
 	SessionID  string
@@ -176,6 +178,10 @@ func (m IDMessage) ToString() string {
 	return "TODO"
 }
 
+func (m IDMessage) GetPreamble() Preamble {
+	return m.Preamble
+}
+
 func ParseSurfacePosition(msg []string) (SurfacePosition, error) {
 	return SurfacePosition{
 		Preamble:    ParsePreamble(msg),
@@ -190,6 +196,10 @@ func ParseSurfacePosition(msg []string) (SurfacePosition, error) {
 
 func (m SurfacePosition) ToString() string {
 	return "TODO"
+}
+
+func (m SurfacePosition) GetPreamble() Preamble {
+	return m.Preamble
 }
 
 func ParseAirbornePosition(msg []string) (AirbornePosition, error) {
@@ -209,6 +219,10 @@ func (m AirbornePosition) ToString() string {
 	return "TODO"
 }
 
+func (m AirbornePosition) GetPreamble() Preamble {
+	return m.Preamble
+}
+
 func ParseAirborneVelocity(msg []string) (AirborneVelocity, error) {
 	return AirborneVelocity{
 		Preamble:     ParsePreamble(msg),
@@ -220,6 +234,10 @@ func ParseAirborneVelocity(msg []string) (AirborneVelocity, error) {
 
 func (m AirborneVelocity) ToString() string {
 	return "TODO"
+}
+
+func (m AirborneVelocity) GetPreamble() Preamble {
+	return m.Preamble
 }
 
 func ParseSurveillanceAlt(msg []string) (SurveillanceAlt, error) {
@@ -234,6 +252,10 @@ func ParseSurveillanceAlt(msg []string) (SurveillanceAlt, error) {
 
 func (m SurveillanceAlt) ToString() string {
 	return "TODO"
+}
+
+func (m SurveillanceAlt) GetPreamble() Preamble {
+	return m.Preamble
 }
 
 func ParseSurveillanceID(msg []string) (SurveillanceID, error) {
@@ -252,6 +274,10 @@ func (m SurveillanceID) ToString() string {
 	return "TODO"
 }
 
+func (m SurveillanceID) GetPreamble() Preamble {
+	return m.Preamble
+}
+
 func ParseAirToAir(msg []string) (AirToAir, error) {
 	return AirToAir{
 		Preamble: ParsePreamble(msg),
@@ -264,6 +290,10 @@ func (m AirToAir) ToString() string {
 	return "TODO"
 }
 
+func (m AirToAir) GetPreamble() Preamble {
+	return m.Preamble
+}
+
 func ParseAllCall(msg []string) (AllCall, error) {
 	return AllCall{
 		Preamble: ParsePreamble(msg),
@@ -273,4 +303,8 @@ func ParseAllCall(msg []string) (AllCall, error) {
 
 func (m AllCall) ToString() string {
 	return "TODO"
+}
+
+func (m AllCall) GetPreamble() Preamble {
+	return m.Preamble
 }
